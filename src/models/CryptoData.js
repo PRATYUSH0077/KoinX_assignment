@@ -10,4 +10,5 @@ const cryptoDataSchema = new mongoose.Schema({
     timestamp: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('CryptoData', cryptoDataSchema);
+const CryptoData = mongoose.model('CryptoData', cryptoDataSchema, 'cryptodatas');
+module.exports = CryptoData;

@@ -2,19 +2,10 @@ const express = require('express');
 const CryptoData = require('../models/CryptoData');
 
 const router = express.Router();
+const { homeRoute, getStats } = require('../controller/cryptoController')
 
-// Rendering the webpage according to the route set by me
-router.get('/', async (req, res) => {
-    try {
-        const latestData = await CryptoData.aggregate([
-            { $sort: { timestamp: -1 } },
-            { $group: { _id: '$coin', data: { $first: '$$ROOT' } } },
-        ]);
+// Routes
 
-        res.render('index', { coins: latestData });
-    } catch (err) {
-        res.status(500).send('Internal Server Error');
-    }
-});
-
+router.get('/', homeRoute);
+router.get('/stats', getStats);
 module.exports = router;
