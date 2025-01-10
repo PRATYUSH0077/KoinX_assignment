@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Stats</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <h1>Cryptocurrency Stats</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Coin</th>
+                <th>Price (USD)</th>
+                <th>Market Cap (USD)</th>
+                <th>24h Change (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% coins.forEach(coin=> { %>
+                <tr>
+                    <td>
+                        <%= coin._id %>
+                    </td>
+                    <td>
+                        <%= coin.data.price.toFixed(2) %>
+                    </td>
+                    <td>
+                        <%= coin.data.marketCap.toLocaleString() %>
+                    </td>
+                    <td>
+                        <%= coin.data.change24h.toFixed(2) %>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</body>
+
+</html>
